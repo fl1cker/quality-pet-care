@@ -5,10 +5,20 @@ Angular application for a mock veterinary clinic
 
 #Organization
 
-## What can I do on this site?
+## Functionality?
     Not Logged In
     1) Book an appointment
+        MANUAL
+        a) calendar with available dates
+        b) dropdown with available times
+        c) radial with doctor name
+        OR
+        AUTOMATIC -- these buttons auto populate the MANUAL fields
+        a) Radial for First Available
+        b) button for next available
     2) Get directions (google maps)
+        a) Display location on google maps embedded in the site
+        b) if clicked, redirect to maps.google.com with the location selected
     3) Create an account
         a) email
         b) Password
@@ -16,6 +26,8 @@ Angular application for a mock veterinary clinic
         d) Address
         e) Phone Number
     4) Log In
+        a) email
+        b) password
 
     Logged In
     1) Add pets to you profile
@@ -25,9 +37,17 @@ Angular application for a mock veterinary clinic
         d) Tempermant
     2) Book an appointment (auto populate pet information)
        a) If you override any prepopulated fields -- would you like to automatically update your profile with these changes?
-    3) View Lab Results, Bills, and Doctors Notes
+    3) View Lab Results, Bills, and Doctors Notes -- 
     4) Live Chat -- LUIS Chatbot?
-    
-    
+    5) Log out
 
-    *) Log out
+## UI Structure
+    Header
+        Welcome
+        Book An Appointment 
+        About Us
+        Our Doctors
+        Contact Us
+        Log In Button / User Profile Component
+    Body
+    Footer
