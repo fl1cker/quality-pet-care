@@ -51,7 +51,6 @@ Angular application for a mock veterinary clinic
         Welcome
         Book An Appointment 
         About Us
-        Our Doctors
         Contact Us
         Log In Button / User Profile Component
     Body

@@ -1,0 +1,10 @@
+<div class="header-bar">
+    <div id="header-bar-logo">((LOGO))</div>
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab label="{{navOption}}" *ngFor="let navOption of navOptions"></mat-tab>
+    </mat-tab-group>
+    <ng-container [ngSwitch]="isLoggedIn">
+        <button *ngSwitchCase="false" id="header-bar-log-in-button" mat-button color="primary" (click)="loginClicked()">LOG IN</button>
+        <button *ngSwitchCase="true" id="header-bar-log-in-button" mat-button color="primary" (click)="logoutClicked()">LOG OUT</button>
+    </ng-container>
+</div>
