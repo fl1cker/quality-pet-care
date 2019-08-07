@@ -1,0 +1,9 @@
+<div class="header-bar">
+    <div>LOGO</div>
+    <ul>
+        <li *ngFor="let navOption of navOptions" (click)="selected = navOption" [ngClass]="{'selectedOption': selected === navOption}">
+            <div class="nav-option">{{navOption}}</div>
+        </li>
+    </ul>
+    <div>User Login</div>
+</div>
