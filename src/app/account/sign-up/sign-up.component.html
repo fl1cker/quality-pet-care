@@ -1,1 +1,20 @@
-<h1>Signing Up</h1>
+<mat-card>
+    <mat-card-header></mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="signUpForm" (ngSubmit)="signUpButtonClicked()">
+            <mat-form-field>
+                <input matInput type="email" placeholder="Email" formControlName="email">
+                <mat-error *ngIf="signUpForm.controls.email.hasError('pattern') || signUpForm.controls.email.hasError('required')">{{Regex.email.errorMessage}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-error *ngIf="signUpForm.controls.password.hasError('required')">{{Regex.required.errorMessage}}</mat-error>
+            </mat-form-field>
+            <div class="action-buttons">
+                <button mat-button type="button" color="secondary" (click)="cancelButtonClicked()">Cancel</button>
+                <button mat-button type="submit" color="primary">Sign Up</button>
+            </div>
+        </form>
+        <a [routerLink]="['../sign-in']" routerLinkActive="router-link-active">Already Have An Account? Sign In.</a>
+    </mat-card-content>
+</mat-card>
