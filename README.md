@@ -2,6 +2,8 @@
 Angular application for a mock veterinary clinic
 
 # To Do
+Add error message to Sign-in form if login fails
+
 
 #Organization
 
