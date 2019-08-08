@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'qpc-navigation-bar',
@@ -9,15 +10,15 @@ export class NavigationBarComponent {
     isLoggedIn = false; // TODO: will become a test again User.  If User then they are logged in.  If null, then they are not.
     readonly navOptions: string[] = ['Home', 'Book An Appointment', 'About Us', 'Contact Us', 'Pet Guide'];
 
+    constructor(private router: Router) {
+        
+    }
+
     loginClicked() {
-        this.toggleLogin();
+        this.router.navigateByUrl('/account/sign-in');
     }
 
     logoutClicked() {
-        this.toggleLogin();
-    }
-
-    toggleLogin() {
-        this.isLoggedIn = !this.isLoggedIn;
+        console.log('logout clicked');
     }
 }

@@ -8,18 +8,18 @@ import { Regex } from 'src/app/shared/classes/regex';
     styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-    signUpForm: FormGroup;
+    signInForm: FormGroup;
     Regex = Regex;
 
     constructor(private formBuilder: FormBuilder) {
-        this.signUpForm = this.formBuilder.group({
+        this.signInForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.pattern(Regex.email.pattern)]],
             password: ['', Validators.required],
         });
     }
 
     signUpButtonClicked() {
-        console.log('submit clicked with: ', this.signUpForm.value);
+        console.log('submit clicked with: ', this.signInForm.value);
     }
 
     cancelButtonClicked() {
