@@ -1,0 +1,19 @@
+mat-form-field {
+    margin-bottom: 6px;
+}
+
+.side-by-side {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.side-by-side > mat-form-field {
+    width: 45%;
+    margin-bottom: 0;
+}
+
+form > div:nth-last-of-type(2){
+    margin-bottom: 20px;
+}

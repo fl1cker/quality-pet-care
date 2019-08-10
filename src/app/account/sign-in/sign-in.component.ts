@@ -6,7 +6,7 @@ import { Regex } from 'src/app/shared/classes/regex';
 @Component({
     selector: 'qpc-sign-in',
     templateUrl: './sign-in.component.html',
-    styleUrls: ['./sign-in.component.scss']
+    styleUrls: ['../entry-forms.scss', './sign-in.component.scss']
 })
 export class SignInComponent {
     signInForm: FormGroup;

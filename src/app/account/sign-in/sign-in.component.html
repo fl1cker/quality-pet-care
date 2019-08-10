@@ -1,26 +1,28 @@
 <mat-card class="mat-elevation-z8">
-        <mat-card-content>
-            <h1 class="greeting-message">Welcome Back! Sign In Below!</h1>
-            <form class="sign-in-form" [formGroup]="signInForm" (ngSubmit)="signUpButtonClicked()">
-                <mat-form-field>
-                    <input matInput type="email" placeholder="Email" formControlName="email">
-                    <mat-error
-                        *ngIf="signInForm.controls.email.hasError('pattern') || signInForm.controls.email.hasError('required')">
-                        {{Regex.email.errorMessage}}</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="password" placeholder="Password" formControlName="password">
-                    <mat-error *ngIf="signInForm.controls.password.hasError('required')">{{Regex.required.errorMessage}}
-                    </mat-error>
-                </mat-form-field>
-                <div class="action-buttons">
-                    <button mat-raised-button type="button" [routerLink]="['/']" color="secondary" (click)="cancelButtonClicked()">Cancel</button>
-                    <button mat-raised-button type="submit" color="primary">Sign In</button>
-                </div>
-            </form>
-            <div class="footer-links">
-                    <a class="footer-link" [routerLink]="['../sign-in']" routerLinkActive="router-link-active">Create An Account</a>
-                    <a class="footer-link" href=javascript:; routerLinkActive="router-link-active">Need Help?</a>
-                </div>
-        </mat-card-content>
-    </mat-card>
+    <mat-card-content>
+        <h1 class="greeting-message">Welcome Back! Sign In Below!</h1>
+        <form class="entry-form" [formGroup]="signInForm" (ngSubmit)="signUpButtonClicked()">
+            <mat-form-field>
+                <input matInput type="email" placeholder="Email" formControlName="email">
+                <mat-error
+                    *ngIf="signInForm.controls.email.hasError('pattern') || signInForm.controls.email.hasError('required')">
+                    {{Regex.email.errorMessage}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-error *ngIf="signInForm.controls.password.hasError('required')">{{Regex.required.errorMessage}}
+                </mat-error>
+            </mat-form-field>
+            <div class="action-buttons">
+                <button mat-raised-button type="button" [routerLink]="['/']" color="secondary"
+                    (click)="cancelButtonClicked()">Cancel</button>
+                <button mat-raised-button type="submit" color="primary">Sign In</button>
+            </div>
+        </form>
+        <div class="footer-links">
+            <a class="footer-link" [routerLink]="['../sign-up']" routerLinkActive="router-link-active">Create An
+                Account</a>
+            <a class="footer-link" href=javascript:; routerLinkActive="router-link-active">Need Help?</a>
+        </div>
+    </mat-card-content>
+</mat-card>
