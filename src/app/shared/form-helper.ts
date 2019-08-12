@@ -1,8 +1,15 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
 
-export function verifyFieldsMatch(control1: AbstractControl, control2: AbstractControl) {
+export function verifyFieldsMatch(control1: AbstractControl, control2: AbstractControl, isCaseSensitive: boolean) {
     if(control1.touched && control2.touched) {
-        return control1.value === control2.value;
+        if(isCaseSensitive) {
+            return control1.value === control2.value; 
+        }
+        
+        const val1 = control1.value ? control1.value.toString().toLocaleLowerCase() : control1.value;
+        const val2 = control2.value ? control2.value.toString().toLocaleLowerCase() : control2.value;
+
+        return val1 === val2;
     }
     return true;
 }

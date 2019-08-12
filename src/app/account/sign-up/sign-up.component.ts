@@ -19,19 +19,19 @@ export class SignUpComponent {
         this.signUpForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.pattern(Regex.email.pattern)]],
             verifyEmail: [''],
-            password: ['', Validators.required],
+            password: ['', Validators.required], // ToDo: implement strong password requirements
             verifyPassword: ['']
         });
         
         this.userInfoForm = this.formBuilder.group({
-            firstName: [],
-            lastName: [],
-            addressStreet1: [],
-            addressStreet2: [],
-            addressCity: [],
-            addressState: [],
-            addressZip: [],
-            phoneNumber: []
+            firstName: ['',],
+            lastName: [''],
+            addressStreet1: [''],
+            addressStreet2: [''],
+            addressCity: [''],
+            addressState: [''],
+            addressZip: [''],
+            phoneNumber: ['']
         })
     }
 
@@ -49,15 +49,16 @@ export class SignUpComponent {
     }
 
     nextButtonClicked() {
-        trimAllFormValues(this.signUpForm);
-        markFormAsDirtyAndTouched(this.signUpForm);
-        if(this.signUpForm.valid) {
-            this.step += 1;
-        }
+        this.step += 1;
+        // trimAllFormValues(this.signUpForm);
+        // markFormAsDirtyAndTouched(this.signUpForm);
+        // if(this.signUpForm.valid) {
+        //     this.step += 1;
+        // }
     }
 
     verifyEmailFieldsMatch() {
-        const doesMatch = verifyFieldsMatch(this.signUpForm.controls.email, this.signUpForm.controls.verifyEmail)
+        const doesMatch = verifyFieldsMatch(this.signUpForm.controls.email, this.signUpForm.controls.verifyEmail, false)
         if(!doesMatch) {
             const errors = this.signUpForm.controls.verifyEmail.errors || {} ;
             errors.fieldMismatch = true;
@@ -72,8 +73,12 @@ export class SignUpComponent {
         }
     }
 
+    updatePhoneNumber(phoneNumber: string) {
+        this.userInfoForm.controls.phoneNumber.setValue(phoneNumber);
+    }
+
     verifyPasswordFieldsMatch() {
-        const doesMatch = verifyFieldsMatch(this.signUpForm.controls.password, this.signUpForm.controls.verifyPassword)
+        const doesMatch = verifyFieldsMatch(this.signUpForm.controls.password, this.signUpForm.controls.verifyPassword, true)
         if(!doesMatch) {
             const errors = this.signUpForm.controls.verifyPassword.errors || {} ;
             errors.fieldMismatch = true;

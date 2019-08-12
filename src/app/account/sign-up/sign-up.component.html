@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z8">
     <mat-card-content *ngIf="step === 1">
-        <h1 class="greeting-message">Create An Account Below!</h1>
+        <h1 class="greeting-message">Start Your Account Below!</h1>
         <form class="entry-form" [formGroup]="signUpForm" (ngSubmit)="nextButtonClicked()">
             <div class="form-field-grouping">
                 <mat-form-field>
@@ -76,7 +76,7 @@
                     <input matInput formControlName="addressZip" placeholder="Zip">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput formControlName="phoneNumber" placeholder="Phone Number">
+                    <input matInput phoneNumberInput maxlength=14 formControlName="phoneNumber" placeholder="Phone Number" (triggerRefresh)="updatePhoneNumber($event)">
                 </mat-form-field>
             </div>
             <div class="action-buttons">
