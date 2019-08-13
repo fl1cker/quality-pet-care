@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatRippleModule, MatTabsModule, MatCardModule, MatInputModule, MatFormFieldModule, MatStepperModule } from '@angular/material';
+import { MatButtonModule, MatRippleModule, MatTabsModule, MatCardModule, MatInputModule, MatFormFieldModule, MatStepperModule, MatSelectModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { PhoneNumberInputDirective } from './directives/phone-number-input.directive';
+import { GlobalService } from './services/global.service';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { PhoneNumberInputDirective } from './directives/phone-number-input.direc
         MatCardModule,
         MatInputModule,
         MatFormFieldModule,
+        MatSelectModule,
         MatStepperModule,
     ],
     exports: [
@@ -26,7 +28,11 @@ import { PhoneNumberInputDirective } from './directives/phone-number-input.direc
         MatInputModule,
         MatFormFieldModule,
         MatStepperModule,
+        MatSelectModule,
         PhoneNumberInputDirective,
-    ]
+    ],
+    providers: [GlobalService]
 })
-export class SharedModule { }
+export class SharedModule {
+
+ }

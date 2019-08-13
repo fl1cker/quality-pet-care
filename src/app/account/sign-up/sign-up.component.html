@@ -61,7 +61,9 @@
                             <input matInput formControlName="addressCity" placeholder="City">
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput formControlName="addressState" placeholder="State">
+                            <mat-select formControlName="addressState" placeholder="State">
+                                <mat-option *ngFor="let state of usStates" value="{{state.abbreviation}}">({{state.abbreviation}}) {{state.name}}</mat-option>
+                            </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="side-by-side">

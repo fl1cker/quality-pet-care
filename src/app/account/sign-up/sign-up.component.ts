@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Regex } from 'src/app/shared/classes/regex';
-import { verifyFieldsMatch, markFormAsDirtyAndTouched, trimAllFormValues } from 'src/app/shared/form-helper';
-import { IfStmt } from '@angular/compiler';
+import { verifyFieldsMatch } from 'src/app/shared/form-helper';
+import { GlobalService } from 'src/app/shared/services/global.service';
+import { USState } from 'src/app/shared/models/us-state';
 
 @Component({
     selector: 'qpc-sign-up',
@@ -13,8 +14,10 @@ export class SignUpComponent {
     credentialsForm: FormGroup;
     userInfoForm: FormGroup;
     Regex = Regex;
+    usStates: USState[] = [];
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private globalService: GlobalService) {
+        this.usStates = this.globalService.getStates();
         this.credentialsForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.pattern(Regex.email.pattern)]],
             verifyEmail: [''],
@@ -23,14 +26,14 @@ export class SignUpComponent {
         });
 
         this.userInfoForm = this.formBuilder.group({
-            firstName: [''],
-            lastName: [''],
-            addressStreet1: [''],
-            addressStreet2: [''],
-            addressCity: [''],
+            firstName: ['', Validators.pattern(Regex.name.pattern)],
+            lastName: ['', Validators.pattern(Regex.name.pattern)],
+            addressStreet1: ['', Validators.pattern(Regex.address.pattern)],
+            addressStreet2: ['', Validators.pattern(Regex.address.pattern)],
+            addressCity: ['', Validators.pattern(Regex.name.pattern)],
             addressState: [''],
-            addressZip: [''],
-            phoneNumber: ['']
+            addressZip: ['', Validators.pattern(Regex.zip.pattern)],
+            phoneNumber: ['', Validators.minLength(14)], // (XXX) XXX-XXXX
         });
     }
 
