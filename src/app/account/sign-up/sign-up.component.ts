@@ -10,21 +10,20 @@ import { IfStmt } from '@angular/compiler';
     styleUrls: ['../entry-forms.scss', './sign-up.component.scss']
 })
 export class SignUpComponent {
-    signUpForm: FormGroup;
+    credentialsForm: FormGroup;
     userInfoForm: FormGroup;
-    step = 1;
     Regex = Regex;
 
     constructor(private formBuilder: FormBuilder) {
-        this.signUpForm = this.formBuilder.group({
+        this.credentialsForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.pattern(Regex.email.pattern)]],
             verifyEmail: [''],
             password: ['', Validators.required], // ToDo: implement strong password requirements
             verifyPassword: ['']
         });
-        
+
         this.userInfoForm = this.formBuilder.group({
-            firstName: ['',],
+            firstName: [''],
             lastName: [''],
             addressStreet1: [''],
             addressStreet2: [''],
@@ -32,11 +31,11 @@ export class SignUpComponent {
             addressState: [''],
             addressZip: [''],
             phoneNumber: ['']
-        })
+        });
     }
 
     submitButtonClicked() {
-        console.log('submit clicked with: ', this.signUpForm.value);
+        console.log('submit clicked with: ', this.credentialsForm.value);
         console.log('submit clicked with: ', this.userInfoForm.value);
     }
 
@@ -44,30 +43,17 @@ export class SignUpComponent {
         console.log('cancel clicked');
     }
 
-    backButtonClicked() {
-        this.step -= 1;
-    }
-
-    nextButtonClicked() {
-        this.step += 1;
-        // trimAllFormValues(this.signUpForm);
-        // markFormAsDirtyAndTouched(this.signUpForm);
-        // if(this.signUpForm.valid) {
-        //     this.step += 1;
-        // }
-    }
-
     verifyEmailFieldsMatch() {
-        const doesMatch = verifyFieldsMatch(this.signUpForm.controls.email, this.signUpForm.controls.verifyEmail, false)
-        if(!doesMatch) {
-            const errors = this.signUpForm.controls.verifyEmail.errors || {} ;
+        const doesMatch = verifyFieldsMatch(this.credentialsForm.controls.email, this.credentialsForm.controls.verifyEmail, false);
+        if (!doesMatch) {
+            const errors = this.credentialsForm.controls.verifyEmail.errors || {};
             errors.fieldMismatch = true;
-            this.signUpForm.controls.verifyEmail.setErrors(errors);
+            this.credentialsForm.controls.verifyEmail.setErrors(errors);
             return false;
         } else {
-            if(this.signUpForm.controls.verifyEmail.hasError('fieldMismatch')) {
-                delete this.signUpForm.controls.verifyEmail.errors.fieldMismatch;
-                this.signUpForm.controls.verifyEmail.updateValueAndValidity();
+            if (this.credentialsForm.controls.verifyEmail.hasError('fieldMismatch')) {
+                delete this.credentialsForm.controls.verifyEmail.errors.fieldMismatch;
+                this.credentialsForm.controls.verifyEmail.updateValueAndValidity();
             }
             return true;
         }
@@ -78,15 +64,15 @@ export class SignUpComponent {
     }
 
     verifyPasswordFieldsMatch() {
-        const doesMatch = verifyFieldsMatch(this.signUpForm.controls.password, this.signUpForm.controls.verifyPassword, true)
-        if(!doesMatch) {
-            const errors = this.signUpForm.controls.verifyPassword.errors || {} ;
+        const doesMatch = verifyFieldsMatch(this.credentialsForm.controls.password, this.credentialsForm.controls.verifyPassword, true);
+        if (!doesMatch) {
+            const errors = this.credentialsForm.controls.verifyPassword.errors || {};
             errors.fieldMismatch = true;
-            this.signUpForm.controls.verifyPassword.setErrors(errors);
+            this.credentialsForm.controls.verifyPassword.setErrors(errors);
         } else {
-            if(this.signUpForm.controls.verifyPassword.hasError('fieldMismatch')) {
-                delete this.signUpForm.controls.verifyPassword.errors.fieldMismatch;
-                this.signUpForm.controls.verifyPassword.updateValueAndValidity();
+            if (this.credentialsForm.controls.verifyPassword.hasError('fieldMismatch')) {
+                delete this.credentialsForm.controls.verifyPassword.errors.fieldMismatch;
+                this.credentialsForm.controls.verifyPassword.updateValueAndValidity();
             }
         }
     }

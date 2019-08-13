@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatRippleModule, MatTabsModule, MatCardModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatButtonModule, MatRippleModule, MatTabsModule, MatCardModule, MatInputModule, MatFormFieldModule, MatStepperModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { PhoneNumberInputDirective } from './directives/phone-number-input.directive';
 
@@ -15,6 +15,7 @@ import { PhoneNumberInputDirective } from './directives/phone-number-input.direc
         MatCardModule,
         MatInputModule,
         MatFormFieldModule,
+        MatStepperModule,
     ],
     exports: [
         CommonModule,
@@ -24,6 +25,7 @@ import { PhoneNumberInputDirective } from './directives/phone-number-input.direc
         MatCardModule,
         MatInputModule,
         MatFormFieldModule,
+        MatStepperModule,
         PhoneNumberInputDirective,
     ]
 })
